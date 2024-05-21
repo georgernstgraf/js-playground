@@ -1,0 +1,34 @@
+{
+  "name": "js-playground",
+  "version": "1.0.0",
+  "description": "ssia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./bin/app"
+  },
+  "keywords": [
+    "htmx"
+  ],
+  "author": "Georg Graf (SPG) <grafg@spengergasse.at>",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "@prisma/client": "^5.14.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "http-errors": "^2.0.0",
+    "pino": "^9.1.0",
+    "pino-http": "^10.1.0",
+    "pino-pretty": "^11.0.0",
+    "prisma": "^5.14.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/georgernstgraf/js-playground.git"
+  },
+  "prisma": {
+    "seed": "node ./prisma/seed.js"
+  }
+}
