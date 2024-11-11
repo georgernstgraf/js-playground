@@ -2,10 +2,10 @@ const { faker } = require('@faker-js/faker');
 const { createId } = require('@paralleldrive/cuid2');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-const recordsPerSec = 100;
-const secTarget = 30;
-const parallel = 2000;
-const many = recordsPerSec * secTarget;
+const recordsPerSec = 200;
+const secTarget = 1e6;
+const parallel = 500;
+const many = 5e6;
 let failures = 0;
 function insertPromise(key) {
     return new Promise((resolve, reject) => {
@@ -20,10 +20,10 @@ function insertPromise(key) {
             })
             .then(() => resolve(key))
             .catch((e) => {
-                if (!e.name == 'PrismaClientKnownRequestError') {
-                    console.dir(e);
-                    console.log('CATCH');
+                if (!e.message.includes('Unique constraint failed')) {
+                    console.log(e);
                 }
+                console.log('CATCH');
                 failures++;
                 resolve(key);
             });
